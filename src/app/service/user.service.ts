@@ -22,4 +22,8 @@ export class UserService {
   newPassword(user: User, id: number): Observable<User> {
     return this.http.post<User>(`http://rate-project.herokuapp.com/new-password/${id}`, user);
   }
+
+  login(user: User): Observable<User> {
+    return this.http.post<User>( 'http://rate-project.herokuapp.com/login', user);
+  }
 }
