@@ -18,4 +18,8 @@ export class UserService {
   detail(id): Observable<User> {
     return this.http.get<User>(this.USER_API + `/${id}`);
   }
+
+  newPassword(user: User, id: number): Observable<User> {
+    return this.http.post<User>(`http://rate-project.herokuapp.com/new-password/${id}`, user);
+  }
 }
