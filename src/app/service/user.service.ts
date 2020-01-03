@@ -14,4 +14,8 @@ export class UserService {
   register(user): Observable<User> {
     return this.http.post<User>('http://rate-project.herokuapp.com/register', user);
   }
+
+  detail(id): Observable<User> {
+    return this.http.get<User>(this.USER_API + `/${id}`);
+  }
 }
