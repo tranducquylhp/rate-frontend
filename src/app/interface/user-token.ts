@@ -7,6 +7,7 @@ export interface UserToken {
   username: string;
   password: string;
   confirmPassword: string;
+  accessToken: string;
   studyProgram: StudyProgram[];
   role: Role;
 }
