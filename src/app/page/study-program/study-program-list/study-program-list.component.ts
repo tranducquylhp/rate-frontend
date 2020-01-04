@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import {StudyProgramService} from '../../../service/study-program.service';
+import {Router} from '@angular/router';
+import {AuthenticationService} from '../../../service/authentication.service';
+import {StudyProgram} from '../../../interface/study-program';
 
 @Component({
   selector: 'app-study-program-list',
@@ -7,9 +11,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class StudyProgramListComponent implements OnInit {
 
-  constructor() { }
-
+  studyPrograms: StudyProgram[];
+  constructor(private studyProgramService: StudyProgramService,
+              private router: Router,
+              private authenticationService: AuthenticationService) { }
   ngOnInit() {
+    this.studyProgramService.getAllStudyProgram().subscribe( next => {
+      this.studyPrograms = next;
+    }, error1 => {
+      console.log(error1);
+    });
   }
 
 }
