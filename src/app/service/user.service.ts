@@ -26,4 +26,8 @@ export class UserService {
   login(user: User): Observable<User> {
     return this.http.post<User>( 'https://rate-project.herokuapp.com/login', user);
   }
+
+  getUserByUsername(username: string): Observable<User> {
+    return this.http.get<User>('https://rate-project.herokuapp.com/users?username=' + username);
+  }
 }

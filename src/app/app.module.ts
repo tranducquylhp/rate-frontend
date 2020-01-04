@@ -8,11 +8,13 @@ import {JwtInterceptor} from './helper/jwt-interceptor';
 import { RegisterComponent } from './page/user/register/register.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { HeaderComponent } from './page/header/header.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    RegisterComponent
+    RegisterComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
