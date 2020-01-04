@@ -9,12 +9,16 @@ import { RegisterComponent } from './page/user/register/register.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { HeaderComponent } from './page/header/header.component';
+import { LoginComponent } from './page/user/login/login.component';
+import { StudyProgramListComponent } from './page/study-program/study-program-list/study-program-list.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     RegisterComponent,
-    HeaderComponent
+    HeaderComponent,
+    LoginComponent,
+    StudyProgramListComponent
   ],
   imports: [
     BrowserModule,
