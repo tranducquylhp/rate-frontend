@@ -1,25 +1,25 @@
-<form>
+<form [formGroup]="userForm" (ngSubmit)="createUser()">
   <div class="form-group">
     <label for="name">Họ và tên</label>
-    <input type="text" class="form-control" id="name" placeholder="Họ và tên">
+    <input type="text" class="form-control" id="name" placeholder="Họ và tên" formControlName="name">
   </div>
   <div class="form-group">
     <label for="username">Tên đăng nhập</label>
-    <input type="text" class="form-control" id="username" placeholder="Tên đăng nhập">
+    <input type="text" class="form-control" id="username" placeholder="Tên đăng nhập" formControlName="username">
   </div>
   <div class="form-row">
     <div class="form-group col-md-6">
       <label for="inputPassword4">Mật khẩu</label>
-      <input type="password" class="form-control" id="inputPassword4">
+      <input type="password" class="form-control" id="inputPassword4" formControlName="password">
     </div>
     <div class="form-group col-md-6">
       <label for="confirmPassword">Xác nhận mật khẩu</label>
-      <input type="confirmPassword" class="form-control" id="confirmPassword">
+      <input type="password" class="form-control" id="confirmPassword" formControlName="confirmPassword">
     </div>
   </div>
   <div class="form-group">
     <label for="inputState">Bạn là</label>
-    <select id="inputState" class="form-control">
+    <select id="inputState" class="form-control" (change)="setRole($event)">
       <option value="ROLE_STUDENT">Chọn...</option>
       <option value="ROLE_INSTRUCTOR">Giảng viên</option>
       <option value="ROLE_STUDENT">Học sinh</option>

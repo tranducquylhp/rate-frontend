@@ -9,10 +9,10 @@ import {User} from '../interface/user';
 export class UserService {
 
   constructor(private http: HttpClient) { }
-  private USER_API = 'http://rate-project.herokuapp.com/users';
-  private USER_CURRENT = 'http://rate-project.herokuapp.com/userCurrent';
+  private USER_API = 'https://rate-project.herokuapp.com/users';
+  private USER_CURRENT = 'https://rate-project.herokuapp.com/userCurrent';
   register(user): Observable<User> {
-    return this.http.post<User>('http://rate-project.herokuapp.com/register', user);
+    return this.http.post<User>('https://rate-project.herokuapp.com/register', user);
   }
 
   detail(id): Observable<User> {
@@ -20,10 +20,10 @@ export class UserService {
   }
 
   newPassword(user: User, id: number): Observable<User> {
-    return this.http.post<User>(`http://rate-project.herokuapp.com/new-password/${id}`, user);
+    return this.http.post<User>(`https://rate-project.herokuapp.com/new-password/${id}`, user);
   }
 
   login(user: User): Observable<User> {
-    return this.http.post<User>( 'http://rate-project.herokuapp.com/login', user);
+    return this.http.post<User>( 'https://rate-project.herokuapp.com/login', user);
   }
 }
