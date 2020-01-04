@@ -1,0 +1,16 @@
+<h3>Thông tin khóa học</h3>
+<form [formGroup]="studyProgramForm" (ngSubmit)="create()">
+  <div class="form-group">
+    <label for="exampleFormControlInput1">Tên khóa học</label>
+    <input type="email" class="form-control" id="exampleFormControlInput1" formControlName="name">
+  </div>
+  <div class="form-group">
+    <label for="description">Mô tả khóa học</label>
+    <textarea class="form-control" id="description" rows="3" formControlName="description"></textarea>
+  </div>
+  <div class="form-group">
+    <label for="exampleFormControlTextarea1">Mục đích của khóa học</label>
+    <textarea class="form-control" id="exampleFormControlTextarea1" rows="1" formControlName="goal"></textarea>
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>

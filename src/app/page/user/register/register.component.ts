@@ -38,11 +38,8 @@ export class RegisterComponent implements OnInit {
       studyProgram: []
     };
 
-    console.log(this.user);
-
     this.userService.register(this.user).subscribe( next => {
       console.log('Register successful');
-      console.log(next);
       this.router.navigate(['']);
       this.userForm.reset();
     }, error1 => {
@@ -53,6 +50,5 @@ export class RegisterComponent implements OnInit {
   setRole(event) {
     const value = event.target.value;
     this.role = { name: value};
-    console.log(this.role);
   }
 }

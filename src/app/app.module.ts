@@ -11,6 +11,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { HeaderComponent } from './page/header/header.component';
 import { LoginComponent } from './page/user/login/login.component';
 import { StudyProgramListComponent } from './page/study-program/study-program-list/study-program-list.component';
+import { StudyProgramCreateComponent } from './page/study-program/study-program-create/study-program-create.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { StudyProgramListComponent } from './page/study-program/study-program-li
     RegisterComponent,
     HeaderComponent,
     LoginComponent,
-    StudyProgramListComponent
+    StudyProgramListComponent,
+    StudyProgramCreateComponent
   ],
   imports: [
     BrowserModule,

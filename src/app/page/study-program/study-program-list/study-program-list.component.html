@@ -3,7 +3,7 @@
   Bạn chưa có chương trình học nào
 </div>
 <div class="list-group" *ngIf="studyPrograms.length > 0">
-  <a routerLink="detail-study-program" class="list-group-item list-group-item-action active" *ngFor="let studyProgram of studyPrograms">
+  <a routerLink="detail-study-program" class="list-group-item list-group-item-action" *ngFor="let studyProgram of studyPrograms">
     <div class="d-flex w-100 justify-content-between">
       <h5 class="mb-1">{{studyProgram.name}}</h5>
     </div>
