@@ -48,6 +48,7 @@ export class StudyProgramDetailComponent implements OnInit {
       const id = paraMap.get('id');
       this.studyProgramService.detail(id).subscribe(next => {
         this.studyProgram = next;
+        console.log(this.studyProgram);
         // tslint:disable-next-line:no-shadowed-variable
         this.standardOutputService.getAllStandardOutput(this.studyProgram.id).subscribe(next => {
           this.standardOutputList = next;
@@ -59,7 +60,7 @@ export class StudyProgramDetailComponent implements OnInit {
         console.log(error1);
       });
     });
-    console.log(this.studyProgram);
+
     this.isEditDescription = false;
     this.isEditName = false;
     this.isEditGoal = false;
