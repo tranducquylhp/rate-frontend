@@ -18,7 +18,7 @@ export class StudyProgramDetailComponent implements OnInit {
 
   sub: Subscription;
   studyProgram: StudyProgram;
-  standardOutputList: StandardOutput[] = [];
+  standardOutputList: Array<StandardOutput> = [];
   isEditDescription: boolean;
   studyProgramForm: FormGroup = new FormGroup({
     name: new FormControl(''),
@@ -31,7 +31,10 @@ export class StudyProgramDetailComponent implements OnInit {
     name: new FormControl(''),
   });
   standardOutput: StandardOutput;
-
+  isEditStandardOutput: boolean[] = [];
+  editStandardOutputForm: FormGroup = new FormGroup({
+    name: new FormControl(''),
+  });
   constructor(private studyProgramService: StudyProgramService,
               private router: Router,
               private authenticationService: AuthenticationService,
@@ -48,6 +51,7 @@ export class StudyProgramDetailComponent implements OnInit {
         // tslint:disable-next-line:no-shadowed-variable
         this.standardOutputService.getAllStandardOutput(this.studyProgram.id).subscribe(next => {
           this.standardOutputList = next;
+          this.standardOutputList.shift();
         }, error1 => {
           console.log(error1);
         });
@@ -59,6 +63,11 @@ export class StudyProgramDetailComponent implements OnInit {
     this.isEditDescription = false;
     this.isEditName = false;
     this.isEditGoal = false;
+    // tslint:disable-next-line:prefer-for-of
+    for (let i = 0; i < this.standardOutputList.length; i++) {
+      const output = this.standardOutputList[i];
+      this.isEditStandardOutput[output.id] = false;
+    }
   }
 
   delete() {
@@ -131,16 +140,46 @@ export class StudyProgramDetailComponent implements OnInit {
       studyProgram: this.studyProgram
     };
     this.standardOutputService.create(this.studyProgram.id, this.standardOutput).subscribe(next => {
-      this.standardOutputList.push(next);
+      this.standardOutputList.unshift(next);
       console.log('Add thanh cong');
     }, error1 => {
       console.log(error1);
     });
     this.standardOutputForm.reset();
-    // this.standardOutputService.getAllStandardOutput(this.studyProgram.id).subscribe(next => {
-    //   this.standardOutputList = next;
-    // }, error1 => {
-    //   console.log(error1);
-    // });
+  }
+
+  editStandardOutput(standardOutputId) {
+    this.isEditStandardOutput[standardOutputId] = !this.isEditStandardOutput[standardOutputId];
+  }
+
+  updateStandardOutput(standardOutput: StandardOutput) {
+    if (this.isEditStandardOutput[standardOutput.id] && this.editStandardOutputForm.value.name !== '') {
+      const index = this.standardOutputList.indexOf(standardOutput);
+      this.standardOutputList.splice(index, 1);
+      standardOutput = {
+        id: standardOutput.id,
+        name: this.editStandardOutputForm.value.name,
+        studyProgram: standardOutput.studyProgram
+      };
+
+      this.standardOutputService.edit(this.studyProgram.id, standardOutput).subscribe( () => {
+        console.log('Sua thanh cong');
+      }, error1 => {
+        console.log(error1);
+      });
+
+      this.standardOutputList.unshift(standardOutput);
+    }
+    this.isEditStandardOutput[standardOutput.id] = false;
+  }
+
+  deleteStandardOtuput(standardOutput: StandardOutput) {
+    const index = this.standardOutputList.indexOf(standardOutput);
+    this.standardOutputList.splice(index, 1);
+    this.standardOutputService.delete(this.studyProgram.id, standardOutput.id).subscribe( () => {
+      console.log('Xoa thanh cong');
+    }, error1 => {
+      console.log(error1);
+    });
   }
 }

@@ -54,16 +54,28 @@
           </div>
           <button type="submit" class="btn btn-primary">Thêm</button>
         </form>
+        <br>
         <div *ngIf="standardOutputList.length === 0">
           <h4>Khóa học chưa có chuẩn đầu ra.</h4>
         </div>
-        <div class="list-group" *ngIf="standardOutputList.length > 0">
-          <button type="button"
-                  class="list-group-item list-group-item-action"
-                  *ngFor="let standardOutput of standardOutputList"
-          >
-            {{standardOutput.name}}
-          </button>
+        <div *ngIf="standardOutputList.length > 0">
+          <div *ngFor="let standardOutput of standardOutputList">
+            <div *ngIf="!isEditStandardOutput[standardOutput.id]" class="list-group-item list-group-item-action"
+                 (click)="editStandardOutput(standardOutput.id)">
+              <p>{{standardOutput.name}}</p>
+            </div>
+            <div *ngIf="isEditStandardOutput[standardOutput.id]">
+              <form [formGroup]="editStandardOutputForm" (ngSubmit)="updateStandardOutput(standardOutput)">
+                <div class="form-group">
+                  <label for="nameStandarOutput">Tên chuẩn đầu ra</label>
+                  <input type="email" class="form-control" id="nameStandarOutput" formControlName="name" value="{{standardOutput.name}}">
+                </div>
+                <button type="submit" class="btn btn-success">Cập nhật</button>
+                <button type="submit" class="btn btn-warning" (click)="deleteStandardOtuput(standardOutput)">Xóa</button>
+                <button type="submit" class="btn btn-danger" (click)="editStandardOutput(standardOutput.id)">Hủy</button>
+              </form>
+            </div>
+          </div>
         </div>
       </div>
     </div>

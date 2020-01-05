@@ -20,7 +20,7 @@ export class StandardOutputService {
     return this.http.get<StandardOutput>(this.API_URL + '/' + studyProgramId + '/standardOutputs/' + standardOutputId);
   }
 
-  delete(studyProgramId, standardOutputId: string): Observable<StandardOutput> {
+  delete(studyProgramId, standardOutputId: number): Observable<StandardOutput> {
     return this.http.delete<StandardOutput>(this.API_URL + '/' + studyProgramId + '/standardOutputs/' + standardOutputId);
   }
 
