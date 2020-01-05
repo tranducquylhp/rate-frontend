@@ -19,7 +19,6 @@ export class HeaderComponent implements OnInit {
       const username = this.authenticationService.currentUserValue.username;
       userService.getUserByUsername(username).subscribe(next => {
         this.currentUser = next;
-        console.log(this.currentUser);
       }, error1 => {
         console.log(error1);
       });

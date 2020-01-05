@@ -12,6 +12,8 @@ import { HeaderComponent } from './page/header/header.component';
 import { LoginComponent } from './page/user/login/login.component';
 import { StudyProgramListComponent } from './page/study-program/study-program-list/study-program-list.component';
 import { StudyProgramCreateComponent } from './page/study-program/study-program-create/study-program-create.component';
+import { StudyProgramDetailComponent } from './page/study-program/study-program-detail/study-program-detail.component';
+import { StandardOutputCreateComponent } from './page/standard-output/standard-output-create/standard-output-create.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,9 @@ import { StudyProgramCreateComponent } from './page/study-program/study-program-
     HeaderComponent,
     LoginComponent,
     StudyProgramListComponent,
-    StudyProgramCreateComponent
+    StudyProgramCreateComponent,
+    StudyProgramDetailComponent,
+    StandardOutputCreateComponent
   ],
   imports: [
     BrowserModule,
