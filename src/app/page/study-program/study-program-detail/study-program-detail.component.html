@@ -1,5 +1,15 @@
-<h3 style="text-align: left">Thông tin khóa học: {{studyProgram.name}}</h3>
-<h3 style="text-align: right"><button (click)="delete()" style="background-color: red; color: white">Xóa khóa học</button></h3>
+<h3 style="text-align: left">Thông tin khóa học:
+  <span *ngIf="!isEditName" (dblclick)="editName()"
+        style="background-color: blue; color: white">{{studyProgram.name}}</span>
+</h3>
+<form [formGroup]="studyProgramForm" (ngSubmit)="update()" *ngIf="isEditName">
+  <input formControlName="name" class="form-control" value="{{studyProgram.name}}">
+  <button type="submit" class="btn btn-success">Cập nhật</button>
+  <button type="submit" class="btn btn-danger" (click)="editName()">Hủy</button>
+</form>
+<h3 style="text-align: right">
+  <button (click)="delete()" style="background-color: red; color: white">Xóa khóa học</button>
+</h3>
 
 <div class="row">
   <div class="col-4">
@@ -8,7 +18,7 @@
          href="#list-home"
          role="tab" aria-controls="home" (dblclick)="editDescription()">Mô tả</a>
       <a class="list-group-item list-group-item-action" id="list-profile-list" data-toggle="list" href="#list-profile"
-         role="tab" aria-controls="profile">Mục tiêu</a>
+         role="tab" aria-controls="profile" (dblclick)="editGoal()">Mục tiêu</a>
       <a class="list-group-item list-group-item-action" id="list-messages-list" data-toggle="list"
          href="#list-messages"
          role="tab" aria-controls="messages">Các chuẩn đầu ra</a>
@@ -19,7 +29,7 @@
       <div class="tab-pane fade show active" id="list-home" role="tabpanel"
            aria-labelledby="list-home-list">
         <p *ngIf="!isEditDescription">{{studyProgram.description}}</p>
-        <form [formGroup]="studyProgramForm" (ngSubmit)="update()" *ngIf="isEditDescription" >
+        <form [formGroup]="studyProgramForm" (ngSubmit)="update()" *ngIf="isEditDescription">
           <textarea class="form-control" id="description" rows="3"
                     formControlName="description" [value]="studyProgram.description"></textarea>
           <button type="submit" class="btn btn-success">Cập nhật</button>
@@ -27,7 +37,15 @@
         </form>
       </div>
       <div class="tab-pane fade" id="list-profile" role="tabpanel"
-           aria-labelledby="list-profile-list">{{studyProgram.goal}}</div>
+           aria-labelledby="list-profile-list">
+        <p *ngIf="!isEditGoal">{{studyProgram.goal}}</p>
+        <form [formGroup]="studyProgramForm" (ngSubmit)="update()" *ngIf="isEditGoal">
+          <textarea class="form-control" id="goal" rows="1"
+                    formControlName="goal" [value]="studyProgram.goal"></textarea>
+          <button type="submit" class="btn btn-success">Cập nhật</button>
+          <button type="submit" class="btn btn-danger" (click)="editGoal()">Hủy</button>
+        </form>
+      </div>
       <div class="tab-pane fade" id="list-messages" role="tabpanel" aria-labelledby="list-messages-list">
         <a routerLink="create-standard-output">
           <h6>Thêm chuẩn đầu ra</h6>

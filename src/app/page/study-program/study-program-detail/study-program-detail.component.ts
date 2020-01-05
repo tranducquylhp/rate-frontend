@@ -24,6 +24,8 @@ export class StudyProgramDetailComponent implements OnInit {
     description: new FormControl(''),
     goal: new FormControl('')
   });
+  isEditName: boolean;
+  isEditGoal: boolean;
   constructor(private studyProgramService: StudyProgramService,
               private router: Router,
               private authenticationService: AuthenticationService,
@@ -42,13 +44,14 @@ export class StudyProgramDetailComponent implements OnInit {
     });
     console.log(this.studyProgram);
     this.isEditDescription = false;
+    this.isEditName = false;
+    this.isEditGoal = false;
   }
 
   delete() {
     this.studyProgramService.delete(this.studyProgram.id).subscribe( () => {
       console.log('Xóa thành công');
       this.router.navigate(['/list-study-program']);
-      window.location.reload();
     }, error1 => {
       console.log(error1);
     });
@@ -56,6 +59,14 @@ export class StudyProgramDetailComponent implements OnInit {
 
   editDescription() {
     this.isEditDescription = !this.isEditDescription;
+  }
+
+  editName() {
+    this.isEditName = !this.isEditName;
+  }
+
+  editGoal() {
+    this.isEditGoal = !this.isEditGoal;
   }
 
   update() {
@@ -70,6 +81,26 @@ export class StudyProgramDetailComponent implements OnInit {
         user: this.studyProgram.user
       };
     }
+    if (this.isEditName && this.studyProgramForm.value.name !== '') {
+      this.studyProgram = {
+        id: this.studyProgram.id,
+        name: this.studyProgramForm.value.name,
+        description: this.studyProgram.description,
+        goal: this.studyProgram.goal,
+        standardOutput: this.studyProgram.standardOutput,
+        user: this.studyProgram.user
+      };
+    }
+    if (this.isEditGoal && this.studyProgramForm.value.goal !== '') {
+      this.studyProgram = {
+        id: this.studyProgram.id,
+        name: this.studyProgram.name,
+        description: this.studyProgram.description,
+        goal: this.studyProgramForm.value.goal,
+        standardOutput: this.studyProgram.standardOutput,
+        user: this.studyProgram.user
+      };
+    }
     this.studyProgramService.edit(this.studyProgram).subscribe( next => {
       console.log('update thành công');
       console.log(next);
@@ -77,5 +108,7 @@ export class StudyProgramDetailComponent implements OnInit {
       console.log(error1);
     });
     this.isEditDescription = false;
+    this.isEditName = false;
+    this.isEditGoal = false;
   }
 }
