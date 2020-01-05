@@ -12,23 +12,23 @@ export class StandardOutputService {
   constructor(private http: HttpClient) { }
   API_URL = 'https://rate-project.herokuapp.com/studyPrograms';
 
-  create(studyProgramId: number, standardOutput: StandardOutput): Observable<StudyProgram> {
-    return this.http.post<StudyProgram>(this.API_URL + '/' + studyProgramId + '/standardOutputs', standardOutput);
+  create(studyProgramId: number, standardOutput: StandardOutput): Observable<StandardOutput> {
+    return this.http.post<StandardOutput>(this.API_URL + '/' + studyProgramId + '/standardOutputs', standardOutput);
   }
 
-  detail(studyProgramId, standardOutputId: string): Observable<StudyProgram> {
-    return this.http.get<StudyProgram>(this.API_URL + '/' + studyProgramId + '/standardOutputs/' + standardOutputId);
+  detail(studyProgramId, standardOutputId: string): Observable<StandardOutput> {
+    return this.http.get<StandardOutput>(this.API_URL + '/' + studyProgramId + '/standardOutputs/' + standardOutputId);
   }
 
-  delete(studyProgramId, standardOutputId: string): Observable<StudyProgram> {
-    return this.http.delete<StudyProgram>(this.API_URL + '/' + studyProgramId + '/standardOutputs/' + standardOutputId);
+  delete(studyProgramId, standardOutputId: string): Observable<StandardOutput> {
+    return this.http.delete<StandardOutput>(this.API_URL + '/' + studyProgramId + '/standardOutputs/' + standardOutputId);
   }
 
-  edit(studyProgramId: number, standardOutput: StandardOutput): Observable<StudyProgram> {
-    return this.http.put<StudyProgram>(this.API_URL + '/' + studyProgramId + '/standardOutputs', standardOutput);
+  edit(studyProgramId: number, standardOutput: StandardOutput): Observable<StandardOutput> {
+    return this.http.put<StandardOutput>(this.API_URL + '/' + studyProgramId + '/standardOutputs', standardOutput);
   }
 
-  getAllStudyProgram(studyProgramId: number): Observable<StudyProgram[]> {
-    return this.http.get<StudyProgram[]>(this.API_URL + '/' + studyProgramId + '/standardOutputs');
+  getAllStandardOutput(studyProgramId: number): Observable<StandardOutput[]> {
+    return this.http.get<StandardOutput[]>(this.API_URL + '/' + studyProgramId + '/standardOutputs');
   }
 }

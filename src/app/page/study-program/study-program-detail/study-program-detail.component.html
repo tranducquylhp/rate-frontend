@@ -47,16 +47,23 @@
         </form>
       </div>
       <div class="tab-pane fade" id="list-messages" role="tabpanel" aria-labelledby="list-messages-list">
-        <a routerLink="create-standard-output">
-          <h6>Thêm chuẩn đầu ra</h6>
-        </a>
+        <form [formGroup]="standardOutputForm" (ngSubmit)="add()">
+          <div class="form-group">
+            <label for="exampleFormControlInput1">Tên chuẩn đầu ra</label>
+            <input type="email" class="form-control" id="exampleFormControlInput1" formControlName="name">
+          </div>
+          <button type="submit" class="btn btn-primary">Thêm</button>
+        </form>
         <div *ngIf="standardOutputList.length === 0">
           <h4>Khóa học chưa có chuẩn đầu ra.</h4>
         </div>
-        <div *ngIf="standardOutputList.length > 0">
-          <div *ngFor="let standardOutput of standardOutputList">
+        <div class="list-group" *ngIf="standardOutputList.length > 0">
+          <button type="button"
+                  class="list-group-item list-group-item-action"
+                  *ngFor="let standardOutput of standardOutputList"
+          >
             {{standardOutput.name}}
-          </div>
+          </button>
         </div>
       </div>
     </div>
