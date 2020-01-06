@@ -10,9 +10,10 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { HeaderComponent } from './page/header/header.component';
 import { LoginComponent } from './page/user/login/login.component';
-import { StudyProgramListComponent } from './page/study-program/study-program-list/study-program-list.component';
-import { StudyProgramCreateComponent } from './page/study-program/study-program-create/study-program-create.component';
-import { StudyProgramDetailComponent } from './page/study-program/study-program-detail/study-program-detail.component';
+import {ModuleListComponent} from './page/module/module-list/module-list.component';
+import {ModuleCreateComponent} from './page/module/module-create/module-create.component';
+import {ModuleDetailComponent} from './page/module/module-detail/module-detail.component';
+
 
 @NgModule({
   declarations: [
@@ -20,9 +21,9 @@ import { StudyProgramDetailComponent } from './page/study-program/study-program-
     RegisterComponent,
     HeaderComponent,
     LoginComponent,
-    StudyProgramListComponent,
-    StudyProgramCreateComponent,
-    StudyProgramDetailComponent,
+    ModuleListComponent,
+    ModuleCreateComponent,
+    ModuleDetailComponent,
   ],
   imports: [
     BrowserModule,

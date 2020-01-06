@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {StudyProgram} from '../interface/study-program';
+import {Module} from '../interface/module';
 import {Observable} from 'rxjs';
 import {HttpClient} from '@angular/common/http';
 import {StandardOutput} from '../interface/standard-output';
@@ -10,25 +10,25 @@ import {StandardOutput} from '../interface/standard-output';
 export class StandardOutputService {
 
   constructor(private http: HttpClient) { }
-  API_URL = 'https://rate-project.herokuapp.com/studyPrograms';
+  API_URL = 'https://rate-project.herokuapp.com/modules';
 
-  create(studyProgramId: number, standardOutput: StandardOutput): Observable<StandardOutput> {
-    return this.http.post<StandardOutput>(this.API_URL + '/' + studyProgramId + '/standardOutputs', standardOutput);
+  create(moduleId: number, standardOutput: StandardOutput): Observable<StandardOutput> {
+    return this.http.post<StandardOutput>(this.API_URL + '/' + moduleId + '/standardOutputs', standardOutput);
   }
 
-  detail(studyProgramId, standardOutputId: string): Observable<StandardOutput> {
-    return this.http.get<StandardOutput>(this.API_URL + '/' + studyProgramId + '/standardOutputs/' + standardOutputId);
+  detail(moduleId, standardOutputId: string): Observable<StandardOutput> {
+    return this.http.get<StandardOutput>(this.API_URL + '/' + moduleId + '/standardOutputs/' + standardOutputId);
   }
 
-  delete(studyProgramId, standardOutputId: number): Observable<StandardOutput> {
-    return this.http.delete<StandardOutput>(this.API_URL + '/' + studyProgramId + '/standardOutputs/' + standardOutputId);
+  delete(moduleId, standardOutputId: number): Observable<StandardOutput> {
+    return this.http.delete<StandardOutput>(this.API_URL + '/' + moduleId + '/standardOutputs/' + standardOutputId);
   }
 
-  edit(studyProgramId: number, standardOutput: StandardOutput): Observable<StandardOutput> {
-    return this.http.put<StandardOutput>(this.API_URL + '/' + studyProgramId + '/standardOutputs', standardOutput);
+  edit(moduleId: number, standardOutput: StandardOutput): Observable<StandardOutput> {
+    return this.http.put<StandardOutput>(this.API_URL + '/' + moduleId + '/standardOutputs', standardOutput);
   }
 
-  getAllStandardOutput(studyProgramId: number): Observable<StandardOutput[]> {
-    return this.http.get<StandardOutput[]>(this.API_URL + '/' + studyProgramId + '/standardOutputs');
+  getAllStandardOutput(moduleId: number): Observable<StandardOutput[]> {
+    return this.http.get<StandardOutput[]>(this.API_URL + '/' + moduleId + '/standardOutputs');
   }
 }

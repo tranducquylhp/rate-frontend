@@ -1,5 +1,5 @@
-import {StudyProgram} from './study-program';
 import {Role} from './role';
+import {Module} from './module';
 
 export interface UserToken {
   id?: number;
@@ -8,6 +8,6 @@ export interface UserToken {
   password: string;
   confirmPassword: string;
   accessToken: string;
-  studyProgram: StudyProgram[];
+  module: Module[];
   role: Role;
 }

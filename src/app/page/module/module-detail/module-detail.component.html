@@ -1,9 +1,9 @@
 <h3 style="text-align: left">Thông tin khóa học:
   <span *ngIf="!isEditName" (dblclick)="editName()"
-        style="background-color: blue; color: white">{{studyProgram.name}}</span>
+        style="background-color: blue; color: white">{{module.name}}</span>
 </h3>
-<form [formGroup]="studyProgramForm" (ngSubmit)="update()" *ngIf="isEditName">
-  <input formControlName="name" class="form-control" value="{{studyProgram.name}}">
+<form [formGroup]="moduleForm" (ngSubmit)="update()" *ngIf="isEditName">
+  <input formControlName="name" class="form-control" value="{{module.name}}">
   <button type="submit" class="btn btn-success">Cập nhật</button>
   <button type="submit" class="btn btn-danger" (click)="editName()">Hủy</button>
 </form>
@@ -28,20 +28,20 @@
     <div class="tab-content" id="nav-tabContent">
       <div class="tab-pane fade show active" id="list-home" role="tabpanel"
            aria-labelledby="list-home-list">
-        <p *ngIf="!isEditDescription">{{studyProgram.description}}</p>
-        <form [formGroup]="studyProgramForm" (ngSubmit)="update()" *ngIf="isEditDescription">
+        <p *ngIf="!isEditDescription">{{module.description}}</p>
+        <form [formGroup]="moduleForm" (ngSubmit)="update()" *ngIf="isEditDescription">
           <textarea class="form-control" id="description" rows="3"
-                    formControlName="description" [value]="studyProgram.description"></textarea>
+                    formControlName="description" [value]="module.description"></textarea>
           <button type="submit" class="btn btn-success">Cập nhật</button>
           <button type="submit" class="btn btn-danger" (click)="editDescription()">Hủy</button>
         </form>
       </div>
       <div class="tab-pane fade" id="list-profile" role="tabpanel"
            aria-labelledby="list-profile-list">
-        <p *ngIf="!isEditGoal">{{studyProgram.goal}}</p>
-        <form [formGroup]="studyProgramForm" (ngSubmit)="update()" *ngIf="isEditGoal">
+        <p *ngIf="!isEditGoal">{{module.goal}}</p>
+        <form [formGroup]="moduleForm" (ngSubmit)="update()" *ngIf="isEditGoal">
           <textarea class="form-control" id="goal" rows="1"
-                    formControlName="goal" [value]="studyProgram.goal"></textarea>
+                    formControlName="goal" [value]="module.goal"></textarea>
           <button type="submit" class="btn btn-success">Cập nhật</button>
           <button type="submit" class="btn btn-danger" (click)="editGoal()">Hủy</button>
         </form>

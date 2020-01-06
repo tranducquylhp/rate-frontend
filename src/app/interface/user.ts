@@ -1,4 +1,4 @@
-import {StudyProgram} from './study-program';
+import {Module} from './module';
 import {Role} from './role';
 
 export interface User {
@@ -7,6 +7,6 @@ export interface User {
   username: string;
   password: string;
   confirmPassword: string;
-  studyProgram: StudyProgram[];
+  modules: Module[];
   role: Role;
 }

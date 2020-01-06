@@ -35,7 +35,7 @@ export class RegisterComponent implements OnInit {
       confirmPassword: this.userForm.value.confirmPassword,
       username: this.userForm.value.username,
       role: this.role,
-      studyProgram: []
+      modules: []
     };
 
     this.userService.register(this.user).subscribe( next => {

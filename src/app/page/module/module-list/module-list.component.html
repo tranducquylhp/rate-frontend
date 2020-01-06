@@ -1,0 +1,12 @@
+<h2>Danh sách chương trình học của bạn</h2>
+<div *ngIf="modules.length === 0">
+  Bạn chưa có chương trình học nào
+</div>
+<div class="list-group" *ngIf="modules.length > 0">
+  <a routerLink="detail-module/{{module.id}}" class="list-group-item list-group-item-action" *ngFor="let module of modules">
+    <div class="d-flex w-100 justify-content-between">
+      <h5 class="mb-1">{{module.name}}</h5>
+    </div>
+    <p class="mb-1">{{module.goal}}</p>
+  </a>
+</div>

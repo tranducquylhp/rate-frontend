@@ -2,9 +2,9 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import {RegisterComponent} from './page/user/register/register.component';
 import {LoginComponent} from './page/user/login/login.component';
-import {StudyProgramListComponent} from './page/study-program/study-program-list/study-program-list.component';
-import {StudyProgramCreateComponent} from './page/study-program/study-program-create/study-program-create.component';
-import {StudyProgramDetailComponent} from './page/study-program/study-program-detail/study-program-detail.component';
+import {ModuleListComponent} from './page/module/module-list/module-list.component';
+import {ModuleCreateComponent} from './page/module/module-create/module-create.component';
+import {ModuleDetailComponent} from './page/module/module-detail/module-detail.component';
 
 
 const routes: Routes = [
@@ -17,16 +17,16 @@ const routes: Routes = [
     component: LoginComponent
   },
   {
-    path: 'list-study-program',
-    component: StudyProgramListComponent
+    path: 'list-module',
+    component: ModuleListComponent
   },
   {
-    path: 'create-study-program',
-    component: StudyProgramCreateComponent
+    path: 'create-module',
+    component: ModuleCreateComponent
   },
   {
-    path: 'list-study-program/detail-study-program/:id',
-    component: StudyProgramDetailComponent
+    path: 'list-module/detail-module/:id',
+    component: ModuleDetailComponent
   }
 ];
 

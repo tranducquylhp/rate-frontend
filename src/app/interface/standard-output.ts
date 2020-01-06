@@ -1,8 +1,9 @@
-import {StudyProgram} from './study-program';
+import {Module} from './module';
+
 
 export interface StandardOutput {
   id?: number;
   name: string;
   rate?: string;
-  studyProgram: StudyProgram;
+  module: Module;
 }
