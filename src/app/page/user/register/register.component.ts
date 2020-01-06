@@ -42,6 +42,7 @@ export class RegisterComponent implements OnInit {
       console.log('Register successful');
       this.router.navigate(['']);
       this.userForm.reset();
+      alert('Đăng ký thành công');
     }, error1 => {
       console.log('lỗi' + error1);
     });
